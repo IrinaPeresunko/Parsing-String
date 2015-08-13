@@ -1,8 +1,8 @@
+package parsingStringUsingArrays;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 //import java.util.Arrays;
-
 
 public class ParsingString {
 	public static int[] getPositionOfArithmeticOperations(char[] expression){
@@ -38,7 +38,18 @@ public class ParsingString {
 	      }
 		return brackets ;
 	}
-	
+	public static void checkExpression(char[] expression){
+		
+		for(int i=0;i<expression.length;i++){
+			if(expression[i]=='('){
+				while(expression[i]!=')' && i<expression.length-1){
+					i++;
+				}
+				if(expression[i]==')') System.out.println("good");
+				else System.out.println("not good");
+			}
+		}
+	}
 	public static void main(String[] args) {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -59,6 +70,8 @@ public class ParsingString {
 	      }
 	      //System.out.println(Arrays.toString(expression));
 	     
+	      checkExpression(expression);
+	      
 	     int[] positionOfBrackets=getPositionOfBrackets(expression);
 	     
 	     char[] expressionInBrackets=new char[3*(positionOfBrackets.length/2)];
